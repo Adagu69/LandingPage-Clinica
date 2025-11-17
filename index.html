@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Bienestar | Landing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #eaf6ff;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --text: #0f172a;
+            --accent: #0ea5e9;
+            --accent-2: #38bdf8;
+            --muted: #475569;
+            --border: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #b8e3ff 0%, #fefefe 50%, #ffffff 100%);
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            padding: 32px 24px 48px;
+        }
+
+        main {
+            width: min(480px, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-card {
+            padding: 32px 28px 36px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(140deg, #52c8f9, #c7f1ff 70%, #ffffff);
+        }
+
+        .hero-logo {
+            width: min(260px, 80%);
+            border-radius: 28px;
+            object-fit: contain;
+            box-shadow: 0 20px 45px rgba(14, 165, 233, 0.25);
+            margin-bottom: 17px;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 1.9rem;
+        }
+
+        .hero-content p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .hero-socials {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .hero-socials a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.15);
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero-socials a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px rgba(15, 23, 42, 0.2);
+        }
+
+        .hero-socials svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .socials {
+            display: grid;
+            gap: 12px;
+        }
+
+        .social-link {
+            border: none;
+            border-radius: 18px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .social-link span.icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text);
+        }
+
+        .social-link span.icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(120deg, #f97316, #ef4444, #ec4899);
+        }
+
+        .social-link.facebook {
+            background: linear-gradient(120deg, #2563eb, #1d4ed8);
+        }
+
+        .social-link.whatsapp {
+            background: linear-gradient(120deg, #22c55e, #16a34a);
+        }
+
+        .social-link.youtube {
+            background: linear-gradient(120deg, #ef4444, #dc2626);
+        }
+
+        .social-link.tiktok {
+            background: linear-gradient(120deg, #14b8a6, #0f172a 70%);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(15, 23, 42, 0.35);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+        }
+
+        .service-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 18px;
+        }
+
+        .service-link:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .service {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 18px;
+            background: rgba(248, 250, 252, 0.05);
+            border: 1px solid rgba(248, 250, 252, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-link:hover .service {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.25);
+        }
+
+        .service img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 10px 18px rgba(15, 23, 42, 0.4);
+        }
+
+        .service h3 {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .partners-card h2 {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .partners-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 8px 0 6px;
+        }
+
+        .partner-track {
+            display: flex;
+            gap: 18px;
+            transition: transform 0.35s ease;
+            will-change: transform;
+        }
+
+        .partner-card {
+            flex: 0 0 85%;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
+            padding: 18px;
+        }
+
+        .partner-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            border-radius: 16px;
+            background: #ffffff;
+        }
+
+        .partner-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(14, 165, 233, 0.9);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 2;
+        }
+
+        .partner-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .partner-nav.prev {
+            left: 8px;
+        }
+
+        .partner-nav.next {
+            right: 8px;
+        }
+
+        .media-card h2 {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .media-photo {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 35px rgba(15, 23, 42, 0.15);
+            background: #000;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: cover;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 16px;
+            background: rgba(14, 165, 233, 0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+        }
+
+        .cta {
+            margin-top: 8px;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 18px;
+            text-align: center;
+            font-weight: 600;
+            color: #0b1120;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                padding: 48px 0 72px;
+            }
+
+            .partner-card {
+                flex-basis: 55%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="card hero-card">
+            <img class="hero-logo" src="LOGOOO.jpg" alt="Logo de la Cl&iacute;nica Bienestar" loading="lazy">
+            <div class="hero-content">
+                <h1>Cl&iacute;nica Bienestar</h1>
+                <p>Somos una instituci&oacute;n formada por profesionales especializados en las diferentes &aacute;reas de la salud.</p>
+                <div class="hero-socials">
+                    <a href="https://www.instagram.com/clinicamundosalud?igsh=MWltMGUzaW8wYW43bQ== " target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                            <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@clinicamundosalud?_r=1&_t=ZS-91ThoCmnkI6 " target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 8.5c-1.7-.4-3.1-1.5-3.8-3V4h-3.2v11.3c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3 1-2.3 2.3-2.3c.3 0 .7.1.9.2V9.6c-.3-.1-.6-.1-.9-.1-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.6 5.6-2.5 5.6-5.6V9.1c1 1 2.3 1.7 3.7 1.8V8.5z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/clinicamundosaludsac/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15 4h3V0h-3a6 6 0 0 0-6 6v3H6v4h3v11h4V13h3l1-4h-4V6c0-1.1.9-2 2-2z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/989011384" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3.5A8.5 8.5 0 0 0 3.5 12c0 1.4.4 2.7 1 3.9L3 21l5.3-1.3a8.6 8.6 0 0 0 3.7.8A8.5 8.5 0 0 0 20.5 12 8.5 8.5 0 0 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="2"></path>
+                            <path d="M14.8 13.1c-.3-.2-.7-.3-1-.2-.3.1-.5.5-.7.8-.1.1-.2.2-.4.1-1.3-.6-2.4-1.5-3.2-2.7-.1-.1 0-.3.1-.5l.4-.5c.2-.2.3-.5.2-.8 0-.3-1-2.4-1.1-2.6-.1-.2-.3-.3-.6-.3h-.5a1 1 0 0 0-.9.4c-.3.3-1 1-1 2.3s1 2.6 1.1 2.8c.1.2 2 3.1 4.7 4.3.6.3 1.1.5 1.5.6.6.2 1.1.1 1.5.1.5-.1 1.6-.6 1.8-1.2.2-.6.2-1.1.2-1.2 0-.1-.2-.2-.5-.3z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@clinicamundosalud6704" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18 5 12 5 12 5s-6 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 9 2 12 2 12s0 3 .4 4.8c.2.9.9 1.6 1.8 1.8C6 20 12 20 12 20s6 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.8.4-4.8.4-4.8s0-3-.4-4.8zM10 9l5 3-5 3V9z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="card media-card">
+            <h2>Profesionales a Tu Servicio</h2>
+            <div class="video-wrapper">
+                <video controls preload="metadata" poster="LOGOOO.jpg">
+                    <source src="assets/video1.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducci&oacute;n de video. Descarga el archivo <a href="assets/video1.mp4">aqu&iacute;</a>.
+                </video>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Servicios destacados</h2>
+            <div class="services">
+                <a class="service-link" href="https://clinicamundosalud.com.pe/servicio/centro-de-vacunacion/" target="_blank" rel="noopener noreferrer">
+                    <article class="service">
+                        <img src="assets/Centro-de-Vacunacion.webp" alt="Profesional aplicando vacuna a un paciente" loading="lazy">
+                        <h3>Centro de Vacunaci&oacute;n</h3>
+                    </article>
+                </a>
+                <a class="service-link" href="https://clinicamundosalud.com.pe/servicio/urgencia-pediatrica-y-ginecologica/" target="_blank" rel="noopener noreferrer">
+                    <article class="service">
+                        <img src="assets/Urgencia-Pediatrica-y-Ginecologicas.png" alt="Equipo m&eacute;dico pedi&aacute;trico sonriendo en consulta" loading="lazy">
+                        <h3>Urgencia Pedi&aacute;trica y Ginecol&oacute;gica</h3>
+                    </article>
+                </a>
+                <a class="service-link" href="https://clinicamundosalud.com.pe/servicio/laboratorio/" target="_blank" rel="noopener noreferrer">
+                    <article class="service">
+                        <img src="assets/Sala-de-espera-y-admision-del-Laboratorio.webp" alt="Pasillo moderno de laboratorio cl&iacute;nico" loading="lazy">
+                        <h3>Laboratorio</h3>
+                    </article>
+                </a>
+                <a class="service-link" href="https://clinicamundosalud.com.pe/servicio/farmacia/" target="_blank" rel="noopener noreferrer">
+                    <article class="service">
+                        <img src="assets/Atencion-en-Farmacia.webp" alt="Atenci&oacute;n en mostrador de farmacia" loading="lazy">
+                        <h3>Farmacia</h3>
+                    </article>
+                </a>
+            </div>
+        </section>
+
+        <section class="card partners-card">
+            <h2>Trabajamos con</h2>
+            <div class="partners-carousel">
+                <button class="partner-nav prev" data-partners="prev" aria-label="Empresas anteriores">&#10094;</button>
+                <div class="partner-track">
+                    <article class="partner-card">
+                        <img src="assets/pacifico.png" alt="Logo de MAPFRE" loading="lazy">
+                    </article>
+                    <article class="partner-card">
+                        <img src="assets/mapfree.webp" alt="Logo de Rimac Seguros" loading="lazy">
+                    </article>
+                    <article class="partner-card">
+                        <img src="assets/sanitas.webp" alt="Logo de Sanitas" loading="lazy">
+                    </article>
+                </div>
+                <button class="partner-nav next" data-partners="next" aria-label="Empresas siguientes">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Contacto directo</h2>
+            <div class="contact">
+                <div class="contact-item">
+                    <span class="badge">&#9742;</span>
+                    <span> 989011384</span>
+                </div>
+                <div class="contact-item">
+                    <span class="badge">&#128205;</span>
+                    <span>Av. Carlos Izaguirre 1236</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; <span id="year"></span> Cl&iacute;nica Bienestar &middot; Todos los derechos reservados
+        </footer>
+    </main>
+
+    <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+
+        const partnersTrack = document.querySelector('.partner-track');
+        if (partnersTrack) {
+            const partnerCards = Array.from(partnersTrack.children);
+            const prevBtn = document.querySelector('[data-partners="prev"]');
+            const nextBtn = document.querySelector('[data-partners="next"]');
+            let currentIndex = 0;
+
+            const getGap = () => {
+                const styles = getComputedStyle(partnersTrack);
+                const gapValue = parseFloat(styles.columnGap || styles.gap || '16');
+                return Number.isNaN(gapValue) ? 16 : gapValue;
+            };
+
+            const updateCarousel = () => {
+                if (!partnerCards.length) return;
+                const cardWidth = partnerCards[0].getBoundingClientRect().width;
+                const offset = (cardWidth + getGap()) * currentIndex;
+                partnersTrack.style.transform = `translateX(-${offset}px)`;
+                if (prevBtn) prevBtn.disabled = currentIndex === 0;
+                if (nextBtn) nextBtn.disabled = currentIndex >= partnerCards.length - 1;
+            };
+
+            const moveCarousel = (direction) => {
+                const maxIndex = partnerCards.length - 1;
+                currentIndex = Math.min(Math.max(currentIndex + direction, 0), maxIndex);
+                updateCarousel();
+            };
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => moveCarousel(-1));
+                nextBtn.addEventListener('click', () => moveCarousel(1));
+                window.addEventListener('resize', updateCarousel);
+                updateCarousel();
+            }
+        }
+    </script>
+</body>
+</html>
